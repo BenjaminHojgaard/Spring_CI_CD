@@ -41,7 +41,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-        
+    - name: Build with Maven
+      run: mvn -B package -Pprod --file pom.xml
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
