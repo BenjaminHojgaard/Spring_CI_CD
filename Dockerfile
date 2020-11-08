@@ -1,7 +1,6 @@
 FROM openjdk:8-jdk-alpine
 RUN apk --no-cache add curl
 VOLUME /tmp
-USER root
 ARG REGION_ARG=eu-west-1
 ARG ACCESS_ARG
 ARG SECRET_ARG
