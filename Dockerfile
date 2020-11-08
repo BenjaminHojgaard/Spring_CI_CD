@@ -1,7 +1,7 @@
 FROM adoptopenjdk/openjdk11:alpine-jre
 RUN apk --no-cache add curl
 VOLUME /tmp
-ARG REGION_ARG=eu-west-1
+ARG REGION_ARG=us-east-2
 ARG ACCESS_ARG
 ARG SECRET_ARG
 ENV AWS_REGION=$REGION_ARG
