@@ -10,7 +10,7 @@ public class DemoTest {
 
     @Test
     void addition() {
-        assertEquals(1, 2);
+        assertEquals(1, 1);
     }
 
 }
