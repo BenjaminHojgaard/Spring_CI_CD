@@ -56,6 +56,12 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>contract_accommodation</artifactId>
+            <version>1.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>
