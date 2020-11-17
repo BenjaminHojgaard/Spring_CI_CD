@@ -41,6 +41,13 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
+        
+    - name: maven-settings-xml-action
+      uses: whelk-io/maven-settings-xml-action@v14
+      with:
+        repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/benjaminhojgaard/Contract_Accommodation" }]'
+        servers: '[{ "id": "github", "username": ${{secrets.MAVEN.SETTINGS.USERNAME}}, "password": ${{secrets.MAVEN.SETTINGS.PASSWORD}} }]'
+        
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
