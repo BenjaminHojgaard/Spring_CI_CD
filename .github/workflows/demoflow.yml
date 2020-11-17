@@ -42,15 +42,23 @@ jobs:
       with:
         java-version: 11
         
-    - name: Compile Contract dependency
-      env:
-        GITHUB_USERNAME: ${{ secrets.MAVEN_SETTINGS.USERNAME }}
-        GITHUB_TOKEN: ${{ secrets.MAVEN_SETTINGS.PASSWORD }}
-      run:
-        mvn --settings settings.xml -X compile
-
+        
+    - name: Setup Maven settings.xml
+      uses: whelk-io/maven-settings-xml-action@v11
+      with:
+        servers: |
+            '[
+              {
+                "id": "github",
+                "username": "${env.ARTIFACTORY_USERNAME_REF}",
+                "password": "${env.ARTIFACTORY_TOKEN_REF}"
+              }
+            ]'
         
     - name: Build with Maven
+      env:
+       ARTIFACTORY_USERNAME_REF: "BenjaminHojgaard"
+       ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN_REF }}
       run: mvn -B package --file pom.xml
 
     - name: Configure AWS credentials
