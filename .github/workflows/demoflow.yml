@@ -42,12 +42,12 @@ jobs:
       with:
         java-version: 11
         
-    - name: Deploy to Github Package Registry
+    - name: Compile Contract dependency
       env:
         GITHUB_USERNAME: ${{ secrets.MAVEN_SETTINGS.USERNAME }}
         GITHUB_TOKEN: ${{ secrets.MAVEN_SETTINGS.PASSWORD }}
       run:
-        mvn --settings settings.xml deploy
+        mvn --settings settings.xml compile
 
         
     - name: Build with Maven
