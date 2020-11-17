@@ -45,8 +45,10 @@ jobs:
     - name: maven-settings-xml-action
       uses: whelk-io/maven-settings-xml-action@v14
       with:
+        username: "BenjaminHojgaard"
+        password: ${{ secrets.MAVEN_SETTINGS_PASSWORD }}
         repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/BenjaminHojgaard/Contract_Accommodation" }]'
-        servers: '[{ "id": "github", "username": "BenjaminHojgaard", "password": "5f17663894997d49a4c329ff5507fea1932e6cda" }]'
+        servers: '[{ "id": "github", "username": username, "password": password }]'
         
     - name: Build with Maven
       run: mvn -B package --file pom.xml
