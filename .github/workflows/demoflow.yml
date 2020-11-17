@@ -46,14 +46,7 @@ jobs:
     - name: Setup Maven settings.xml
       uses: whelk-io/maven-settings-xml-action@v11
       with:
-        servers: |
-            '[
-              {
-                "id": "github",
-                "username": "${env.ARTIFACTORY_USERNAME_REF}",
-                "password": "${env.ARTIFACTORY_TOKEN_REF}"
-              }
-            ]'
+        servers: '[{ "id": "github", "username": "${env.ARTIFACTORY_USERNAME_REF}", "password": "${env.ARTIFACTORY_TOKEN_REF}" }]'
         
     - name: Build with Maven
       env:
