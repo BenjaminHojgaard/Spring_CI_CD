@@ -47,7 +47,7 @@ jobs:
         GITHUB_USERNAME: ${{ secrets.MAVEN_SETTINGS.USERNAME }}
         GITHUB_TOKEN: ${{ secrets.MAVEN_SETTINGS.PASSWORD }}
       run:
-        mvn --settings settings.xml compile
+        mvn --settings settings.xml -X compile
 
         
     - name: Build with Maven
