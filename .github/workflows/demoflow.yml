@@ -42,13 +42,12 @@ jobs:
       with:
         java-version: 11
         
-    - name: maven-settings-xml-action
-      env: 
-        MAVEN_SETTINGS_PASSWORD: ${{ secrets.MAVEN_SETTINGS_PASSWORD }}
-      uses: whelk-io/maven-settings-xml-action@v14
-      with:
-        repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/BenjaminHojgaard/Contract_Accommodation" }]'
-        servers: '[{ "id": "github", "username": "BenjaminHojgaard", "password": "secrets.MAVEN_SETTINGS_PASSWORD" }]'
+    - name: Deploy to Github Package Registry
+      env:
+        GITHUB_USERNAME: ${{ secrets.MAVEN_SETTINGS.USERNAME }}
+        GITHUB_TOKEN: ${{ secrets.MAVEN_SETTINGS.PASSWORD }}
+      run:
+        mvn --settings settings.xml deploy
 
         
     - name: Build with Maven
