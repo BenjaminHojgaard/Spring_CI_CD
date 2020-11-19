@@ -14,7 +14,7 @@ public class DemoApplication {
 
     @GetMapping("/")
     public String index(final Model model) {
-        RoomDTO room = new RoomDTO(null, "22", RoomType.F);
+        RoomDTO room = new RoomDTO(null, "24", RoomType.F);
         model.addAttribute("title", "Docker + Spring Boot");
         model.addAttribute("msg", "This is the RoomDTO properties: " + room.getRoomNumber() + room.getRoomType());
         return "index";
