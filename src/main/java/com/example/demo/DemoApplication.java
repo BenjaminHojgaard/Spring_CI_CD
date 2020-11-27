@@ -16,7 +16,7 @@ import java.rmi.RemoteException;
 @Controller
 public class DemoApplication {
 
-    @GetMapping("/")
+    @GetMapping("/hotel")
     public String index(final Model model) throws RemoteException, MalformedURLException {
         var RMI = new RMITest();
         RoomDTO room = new RoomDTO(null, "24", RoomType.F);
