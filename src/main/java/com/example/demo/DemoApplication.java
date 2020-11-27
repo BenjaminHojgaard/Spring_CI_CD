@@ -18,12 +18,10 @@ public class DemoApplication {
 
     @GetMapping("/")
     public String index(final Model model) throws RemoteException, MalformedURLException {
+        var RMI = new RMITest();
         RoomDTO room = new RoomDTO(null, "24", RoomType.F);
         model.addAttribute("title", "Docker + Spring Boot");
-        model.addAttribute("msg", "This is the RoomDTO properties: " + room.getRoomNumber() + room.getRoomType());
-
-        var RMI = new RMITest();
-        System.out.println(RMI.createBooking());
+        model.addAttribute("msg", "This is the RoomDTO properties: " + RMI.createBooking() + room.getRoomNumber() + room.getRoomType());
         return "index";
     }
 
