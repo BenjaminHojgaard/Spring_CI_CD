@@ -26,6 +26,6 @@ jobs:
     - name: Login on Docker
       run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Build Container
-      run: docker build -t madsimo/team-a:0.0.1 .
+      run: docker build -t madsimo/team-a-frontend:0.0.1 .
     - name: Push Container
-      run: docker push madsimo/team-a
+      run: docker push madsimo/team-a-frontend
