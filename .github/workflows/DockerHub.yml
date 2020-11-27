@@ -28,4 +28,4 @@ jobs:
     - name: Build Container
       run: docker build -t frontend/container:0.0.1 .
     - name: Push Container
-      run: docker push frontend/container
+      run: docker push madsimo/team-a:frontend
