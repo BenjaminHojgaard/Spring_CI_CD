@@ -12,8 +12,17 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
+    - name: Setup Maven settings.xml
+      uses: whelk-io/maven-settings-xml-action@v11
+      with:
+        servers: '[{ "id": "github", "username": "${env.ARTIFACTORY_USERNAME_REF}", "password": "${env.ARTIFACTORY_TOKEN_REF}" }]'
+
     - name: Build with Maven
+      env:
+       ARTIFACTORY_USERNAME_REF: "BenjaminHojgaard"
+       ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN_REF }}
       run: mvn -B package --file pom.xml
+      
     - name: Login on Docker
       run: |
           docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
