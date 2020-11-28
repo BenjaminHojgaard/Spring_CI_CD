@@ -78,7 +78,12 @@
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>contract_accommodation</artifactId>
-            <version>1.0.5</version>
+            <version>1.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>contract_accommodation</artifactId>
+            <version>1.0.4</version>
         </dependency>
     </dependencies>
 

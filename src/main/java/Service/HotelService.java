@@ -31,16 +31,13 @@ public class HotelService {
     }
 
     public ArrayList<HotelDTO> findVacantHotels(String city, Date date, int numOfGuests) throws RemoteException {
-       // var hotelsToReturn = (ArrayList<HotelDTO>)obj.fetchHotels("Berlin", new Date(2020, Calendar.DECEMBER, 24), 1);
-        //for (HotelDTO dto: hotelsToReturn) {
-          //  System.out.println(dto.getName());
+        var  vacantHotels = (ArrayList<HotelDTO>)obj.fetchHotels("Berlin", new Date(2020, Calendar.DECEMBER, 24), 1);
 
-        //}
+        for (HotelDTO dto: vacantHotels) {
+            System.out.println(dto.getName());
+        }
 
-        ArrayList<HotelDTO> hotels =  new ArrayList<>();
-        hotels.add(new HotelDTO("Radison", "Radison Street", "berlin"));
-        hotels.add(new HotelDTO("Hilton", "Hilton Street", "London"));
-        return hotels;
+        return vacantHotels;
     }
 
     public boolean createBooking() throws RemoteException {
