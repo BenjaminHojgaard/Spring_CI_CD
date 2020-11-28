@@ -30,7 +30,7 @@ public class HotelService {
         //}
     }
 
-    public ArrayList<HotelDTO> getHotels() throws RemoteException {
+    public ArrayList<HotelDTO> findVacantHotels(String city, Date date, int numOfGuests) throws RemoteException {
        // var hotelsToReturn = (ArrayList<HotelDTO>)obj.fetchHotels("Berlin", new Date(2020, Calendar.DECEMBER, 24), 1);
         //for (HotelDTO dto: hotelsToReturn) {
           //  System.out.println(dto.getName());
