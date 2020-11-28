@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import Service.RMITest;
+import Service.HotelService;
 import dto.RoomDTO;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +18,7 @@ public class DemoApplication {
 
     @GetMapping("/hotel")
     public String index(final Model model) throws RemoteException, MalformedURLException {
-        var RMI = new RMITest();
+        var RMI = new HotelService();
         RoomDTO room = new RoomDTO(null, "24", RoomType.F);
         model.addAttribute("title", "Docker + Spring Boot");
         model.addAttribute("msg", "This is the RoomDTO properties: " + RMI.createBooking() + room.getRoomNumber() + room.getRoomType());
