@@ -20,6 +20,8 @@ public class RMITest {
     String AWS = "rmi://localhost/hotelserver";
     HotelUtility obj;
 
+    
+
     public RMITest() {
         try {
             obj = (HotelUtility) Naming.lookup(AWS);
