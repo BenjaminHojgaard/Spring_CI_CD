@@ -19,6 +19,7 @@ public class RMITest {
     String backendURL = "rmi://localhost/HotelService";
     String AWS = "rmi://localhost/hotelserver";
     HotelUtility obj;
+    
 
     public RMITest() {
         try {
