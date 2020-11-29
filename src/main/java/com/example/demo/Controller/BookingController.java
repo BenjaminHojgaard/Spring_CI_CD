@@ -22,6 +22,7 @@ public class BookingController {
     }
     @DeleteMapping("/{bookingID}")
     public boolean cancelBooking(@PathVariable int bookingID){
+
         return bookingService.cancelBooking(bookingID);
     }
 
