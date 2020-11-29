@@ -1,8 +1,8 @@
-package Controller;
+package com.example.demo.Controller;
 
-import Service.HotelService;
+import com.example.demo.Service.HotelService;
 import dto.CreateBookingDTO;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -11,14 +11,13 @@ import java.util.Date;
 @RestController
 public class HotelController {
 
-    final
-    HotelService hotelService;
+    final HotelService hotelService;
 
     public HotelController(HotelService hotelService) {
         this.hotelService = hotelService;
     }
 
-    @GetMapping("/hotel")
+    @RequestMapping("/hotel")
     public boolean hotel() {
         ArrayList<String> list = new ArrayList<>();
         list.add("");
