@@ -1,7 +1,10 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Service.BookingService;
 import com.example.demo.Service.HotelService;
 import dto.CreateBookingDTO;
+import org.apache.log4j.Logger;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,18 +14,21 @@ import java.util.Date;
 @RestController
 public class HotelController {
 
-    final HotelService hotelService;
+    final Logger logger = Logger.getLogger(HotelController.class);
 
-    public HotelController(HotelService hotelService) {
-        this.hotelService = hotelService;
+    final BookingService bookingService;
+
+    public HotelController(BookingService bookingService) {
+        this.bookingService = bookingService;
     }
 
     @RequestMapping("/hotel")
     public boolean hotel() {
+        logger.info("hotel entered");
         ArrayList<String> list = new ArrayList<>();
         list.add("");
         list.add("");
-        return hotelService.createBooking(
+        return bookingService.createBooking(
                 new CreateBookingDTO(
                 list,
                 "",
