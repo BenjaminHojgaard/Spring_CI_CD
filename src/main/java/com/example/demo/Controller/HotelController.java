@@ -4,6 +4,7 @@ import com.example.demo.Service.BookingService;
 import com.example.demo.Service.HotelService;
 import dto.HotelDTO;
 import dto.RoomDTO;
+import dto.VacantHotelsDTO;
 import org.apache.log4j.Logger;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,7 @@ public class HotelController {
     public Collection<HotelDTO> findVacantRooms(@PathVariable String city, @PathVariable String date, @PathVariable int numberOfGuests) throws ParseException {
         logger.info("findVacantRooms called");
         Date date1 = new SimpleDateFormat("dd-MM-YYYY").parse(date);
-        return hotelService.findVacantHotels(city, date1, numberOfGuests);
+        VacantHotelsDTO dto = new VacantHotelsDTO(city, date1, numberOfGuests);
+        return hotelService.findVacantHotels(dto);
     }
 }
