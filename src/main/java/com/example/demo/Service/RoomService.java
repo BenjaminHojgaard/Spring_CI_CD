@@ -19,7 +19,7 @@ public class RoomService implements RoomUtility {
     public Collection<RoomDTO> findVacantRooms(int i, Date date, int i1) {
 
         VacantRoomsDTO dto = new VacantRoomsDTO();
-        ResponseEntity<Collection> entity = restTemplate.getForEntity(RESERVATION_URL, findVacantRoomsDTO, Collection.class);
+        ResponseEntity<Collection<RoomDTO>> entity = restTemplate.getForEntity(URL, dto, Collection.class);
 
 
         return entity.getBody();
@@ -28,7 +28,7 @@ public class RoomService implements RoomUtility {
     @Override
     public boolean markRoomAsReserved(List<String> list) {
 
-        ResponseEntity<Boolean> entity = restTemplate.postForEntity(RESERVATION_URL, list, Boolean.class);
+        ResponseEntity<Boolean> entity = restTemplate.postForEntity(URL, list, Boolean.class);
 
         return entity.getBody();
 

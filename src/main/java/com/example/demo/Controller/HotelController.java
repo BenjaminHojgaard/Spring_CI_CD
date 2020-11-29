@@ -29,10 +29,7 @@ public class HotelController {
         list.add("");
         list.add("");
         return bookingService.createBooking(
-                new CreateBookingDTO(
-                list,
-                "",
-                1,
+                new CreateBookingDTO(list, "", 1,
                 new Date(System.currentTimeMillis()),
                 new Date(System.currentTimeMillis()),
                 true)
