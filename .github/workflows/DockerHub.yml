@@ -3,7 +3,7 @@ name: Building Frontend Docker Image
 on:
   push:
     branches: 
-      - main
+      - docker
 
 jobs:
   main:
