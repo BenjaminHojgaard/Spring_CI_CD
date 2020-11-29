@@ -10,7 +10,7 @@ public class BookingService implements BookingUtility {
 
     @Override
     public boolean createBooking(CreateBookingDTO createBookingDTO) {
-        return true;
+        return false;
     }
 
     @Override
@@ -22,5 +22,4 @@ public class BookingService implements BookingUtility {
     public BookingDTO findBooking(int i) {
         return null;
     }
-
 }
