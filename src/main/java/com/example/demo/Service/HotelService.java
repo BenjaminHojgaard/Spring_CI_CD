@@ -3,6 +3,7 @@ package com.example.demo.Service;
 import dto.BookingDTO;
 import dto.CreateBookingDTO;
 import dto.HotelDTO;
+import dto.VacantHotelsDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -18,13 +19,13 @@ public class HotelService implements HotelUtility {
     static final String URL = "http://localhost:8080/ISBN/";
 
     @Override
-    public Collection<HotelDTO> findVacantHotels(String s, Date date, int i) {
+    public Collection<HotelDTO> findVacantHotels(VacantHotelsDTO vacantHotelsDTO) {
 
-        VacantHotelsDTO dto = new VacantHotelsDTO();
-
-        ResponseEntity<Collection<HotelDTO>> entity = restTemplate.getForEntity(URL, dto, Collection.class);
+        ResponseEntity<Collection> entity = restTemplate.getForEntity(URL, Collection.class, vacantHotelsDTO);
 
 
         return entity.getBody();
     }
+
+
 }
