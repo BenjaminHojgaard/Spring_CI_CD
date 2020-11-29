@@ -1,65 +1,43 @@
 package com.example.demo.unit;
-import Service.HotelService;
-import com.github.javafaker.Faker;
-import dto.HotelDTO;
-import org.junit.jupiter.api.BeforeAll;
+
+
+import com.example.demo.Service.HotelService;
+import dto.BookingDTO;
+import dto.RoomBookingDTO;
+import dto.RoomDTO;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.rmi.RemoteException;
-import java.util.ArrayList;
+import java.util.*;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(MockitoExtension.class)
 public class HotelServiceTest {
 
-
-    @Mock
-    HotelDTO hotelDTOMock;
-
-    private Faker faker = new Faker();
+    @Mock RoomBookingDTO roomBookingMock;
+    @Mock RoomDTO roomMock;
 
 
-    @BeforeAll
-    public void beforeAll(){
-         hotelDTOMock = mock(HotelDTO.class);
-
-    }
-
-
-    @Test
-    public void mustReturnListOfVacantHotels() throws RemoteException {
+  /*  @Test
+    public void mustReturnTrueWhenABookingIsMade() {
         //Arrange
+        ArrayList<RoomBookingDTO> roomBookings =  new ArrayList<>();
+        roomBookings.add(roomBookingMock);
 
-        ArrayList<dto.HotelDTO> target = new ArrayList();
-        target.add(hotelDTOMock);
-
-
-//
-       // Mockito.doReturn(target).when(hotelHandlerMock).fetchHotels(faker.address().city(), faker.date().birthday(), 4);
-
-
-        //when(bankMock.getAccount("XYZ-456")).thenReturn(target);
-        //source.transfer(2_000_00L, "XYZ-456");
-        //assertEquals(-2_000_00L, source.getBalance());
-       // assertEquals(target, hotelHandlerMock.fetchHotels(faker.address().city(), faker.date().birthday(), 4));
+        BookingDTO booking = new BookingDTO("passportnumber", roomBookings, false, 3 {
 
         //Act
-        HotelService hs = new HotelService();
-        hs.findVacantHotels()
 
+        HotelService hotelService = new HotelService();
+
+
+            var result = ;
+        
         //Assert
-
-    }
-
-
-
-
-
-
+        assertEquals(expected, result);
+    
+    }*/
+}
