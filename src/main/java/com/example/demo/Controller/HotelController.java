@@ -26,10 +26,12 @@ public class HotelController {
 
     public HotelController(HotelService hotelService) {
         this.hotelService = hotelService;
+        logger.info("Constructor called");
     }
 
     @GetMapping("/VacantHotels/{city}/{date}/{numberOfGuests}")
     public Collection<HotelDTO> findVacantRooms(@PathVariable String city, @PathVariable String date, @PathVariable int numberOfGuests) throws ParseException {
+        logger.info("findVacantRooms called");
         Date date1 = new SimpleDateFormat("dd-MM-YYYY").parse(date);
         return hotelService.findVacantHotels(city, date1, numberOfGuests);
     }
