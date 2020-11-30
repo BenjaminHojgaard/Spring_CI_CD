@@ -15,8 +15,18 @@ import java.util.Date;
 @Service
 public class HotelService implements HotelUtility {
 
-    static RestTemplate restTemplate = new RestTemplate();
+    static RestTemplate restTemplate ;
     static final String URL = "http://localhost:8080/ISBN/";
+
+    public HotelService() {
+        restTemplate = new RestTemplate();
+    }
+
+    public HotelService(RestTemplate template) {
+        restTemplate = template;
+    }
+
+
 
     @Override
     public Collection<HotelDTO> findVacantHotels(VacantHotelsDTO vacantHotelsDTO) {

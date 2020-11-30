@@ -13,9 +13,16 @@ import java.util.List;
 @Service
 public class RoomService implements RoomUtility {
 
-    static RestTemplate restTemplate = new RestTemplate();
+    static RestTemplate restTemplate;
     static final String URL = "";
 
+    public RoomService() {
+        restTemplate = new RestTemplate();
+    }
+
+    public RoomService(RestTemplate template) {
+        restTemplate = template;
+    }
 
     @Override
     public Collection<RoomDTO> findVacantRooms(VacantRoomsDTO vacantRoomsDTO) {
