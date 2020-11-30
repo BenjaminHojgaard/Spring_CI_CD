@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.apache.log4j.Logger;
 
 @RestController
-@RequestMapping("/Booking")
+@RequestMapping("/booking")
 public class BookingController {
 
     private final static Logger logger = Logger.getLogger(BookingController.class);
@@ -19,7 +19,7 @@ public class BookingController {
         logger.info("Constructor called");
     }
 
-    @PostMapping("/createBooking")
+    @PostMapping("")
     public boolean createBooking(@RequestBody CreateBookingDTO createBookingDTO) {
         logger.info("createBooking - called");
         return bookingService.createBooking(createBookingDTO);

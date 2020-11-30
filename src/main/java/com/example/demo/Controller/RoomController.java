@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Room")
+@RequestMapping("/room")
 public class RoomController {
 
     final Logger logger = Logger.getLogger(RoomController.class);
@@ -26,16 +26,14 @@ public class RoomController {
         logger.info("Constructor called");
     }
 
-    @GetMapping("/VacantRooms/{hotelNumber}/{date}/{numberOfGuests}")
-    public Collection<RoomDTO> findVacantRooms(@PathVariable int hotelNumber, @PathVariable String date, @PathVariable int numberOfGuests) throws ParseException {
+    @GetMapping("")
+    public Collection<RoomDTO> findVacantRooms(@RequestBody VacantRoomsDTO vacantRoomsDTO) {
         logger.info("findVacantRooms - called");
-        Date date1 = new SimpleDateFormat("dd-MM-YYYY").parse(date);
-        VacantRoomsDTO dto = new VacantRoomsDTO(hotelNumber, date1, numberOfGuests);
-        return roomService.findVacantRooms(dto);
+        return roomService.findVacantRooms(vacantRoomsDTO);
     }
 
-    @PutMapping("/{roomNumber}")
-    public boolean markRoomAsReserved(@PathVariable List<String> roomNumber){
+    @PutMapping("")
+    public boolean markRoomAsReserved(@RequestBody List<String> roomNumber){
         logger.info("markRoomAsReserved - called");
         return roomService.markRoomAsReserved(roomNumber);
     }
