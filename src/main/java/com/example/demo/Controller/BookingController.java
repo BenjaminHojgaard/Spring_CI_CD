@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 @RequestMapping("/Booking")
 public class BookingController {
 
-    private final static Logger logger = Logger.getLogger(HomeController.class);
+    private final static Logger logger = Logger.getLogger(BookingController.class);
 
     final BookingService bookingService;
 

@@ -217,3 +217,17 @@
 2020-11-30 17:35:41 INFO  HomeController:24 - createBooking - called
 2020-11-30 17:35:41 INFO  HomeController:27 - createBooking - called
 2020-11-30 17:35:41 INFO  HomeController:29 - createBooking - response received with statuscode: 200 OK
+2020-11-30 18:09:39 INFO  HomeController:22 - Constructor called
+2020-11-30 18:09:39 INFO  HomeController:19 - Constructor called
+2020-11-30 18:09:39 INFO  HomeController:15 - Constructor called
+2020-11-30 18:09:39 INFO  HotelController:30 - Constructor called
+2020-11-30 18:20:56 INFO  HomeController:22 - Constructor called
+2020-11-30 18:20:56 INFO  BookingController:19 - Constructor called
+2020-11-30 18:20:56 INFO  HomeController:15 - Constructor called
+2020-11-30 18:20:56 INFO  HotelController:30 - Constructor called
+2020-11-30 18:20:56 INFO  RoomController:26 - Constructor called
+2020-11-30 18:22:08 INFO  HomeController:22 - Constructor called
+2020-11-30 18:22:08 INFO  BookingController:19 - Constructor called
+2020-11-30 18:22:08 INFO  HomeController:15 - Constructor called
+2020-11-30 18:22:08 INFO  HotelController:30 - Constructor called
+2020-11-30 18:22:08 INFO  RoomController:26 - Constructor called

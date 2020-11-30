@@ -1,6 +1,7 @@
 package com.example.demo.Service;
 
 import com.example.demo.Controller.HomeController;
+import com.example.demo.URLs;
 import dto.BookingDTO;
 import dto.CreateBookingDTO;
 import org.springframework.hateoas.EntityModel;
@@ -16,7 +17,6 @@ public class BookingService implements BookingUtility {
     private final static Logger logger = Logger.getLogger(HomeController.class);
 
     static RestTemplate restTemplate;
-    String URL = "http://localhost:8080/";
 
     public BookingService() {
         logger.info("Constructor called");
@@ -30,7 +30,7 @@ public class BookingService implements BookingUtility {
     @Override
     public boolean createBooking(CreateBookingDTO createBookingDTO) {
         logger.info("createBooking - called");
-        ResponseEntity<Boolean> response = template.postForEntity(URL + "booking", createBookingDTO, Boolean.class);
+        ResponseEntity<Boolean> response = restTemplate.postForEntity(URLs.BACKEND_URL + "booking", createBookingDTO, Boolean.class);
         logger.info("createBooking - response received with statuscode: " + response.getStatusCode());
         return response.getBody();
     }
@@ -38,7 +38,7 @@ public class BookingService implements BookingUtility {
     @Override
     public boolean cancelBooking(int bookingID) {
         logger.info("cancelBooking - called");
-        template.delete(URL + "booking/{bookingID}", bookingID);
+        restTemplate.delete(URLs.BACKEND_URL + "booking/{bookingID}", bookingID);
         var result = findBooking(bookingID);
         logger.info("cancelBooking - result: " + result);
         return result.getRoomBookings().isEmpty();
@@ -47,7 +47,7 @@ public class BookingService implements BookingUtility {
     @Override
     public BookingDTO findBooking(int bookingID) {
         logger.info("findBooking - called");
-        ResponseEntity<BookingDTO> response = template.getForEntity(URL + "booking/{bookingID}", BookingDTO.class, bookingID);
+        ResponseEntity<BookingDTO> response = restTemplate.getForEntity(URLs.BACKEND_URL + "booking/{bookingID}", BookingDTO.class, bookingID);
         logger.info("findBooking - response received with statuscode: " + response.getStatusCode());
         return response.getBody();
     }

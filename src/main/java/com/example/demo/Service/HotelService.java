@@ -1,5 +1,6 @@
 package com.example.demo.Service;
 
+import com.example.demo.URLs;
 import dto.BookingDTO;
 import dto.CreateBookingDTO;
 import dto.HotelDTO;
@@ -16,7 +17,6 @@ import java.util.Date;
 public class HotelService implements HotelUtility {
 
     static RestTemplate restTemplate ;
-    static final String URL = "http://localhost:8080/ISBN/";
 
     public HotelService() {
         restTemplate = new RestTemplate();
@@ -30,10 +30,7 @@ public class HotelService implements HotelUtility {
 
     @Override
     public Collection<HotelDTO> findVacantHotels(VacantHotelsDTO vacantHotelsDTO) {
-
-        ResponseEntity<Collection> entity = restTemplate.getForEntity(URL, Collection.class, vacantHotelsDTO);
-
-
+        ResponseEntity<Collection> entity = restTemplate.getForEntity(URLs.BACKEND_URL + "hotel", Collection.class, vacantHotelsDTO);
         return entity.getBody();
     }
 

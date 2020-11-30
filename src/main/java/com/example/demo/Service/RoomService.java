@@ -1,8 +1,9 @@
 package com.example.demo.Service;
 
+import com.example.demo.URLs;
 import dto.RoomDTO;
 import dto.VacantRoomsDTO;
-import org.jvnet.hk2.annotations.Service;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -15,7 +16,6 @@ import java.util.List;
 public class RoomService implements RoomUtility {
 
     static RestTemplate restTemplate;
-    static final String URL = "";
 
     public RoomService() {
         restTemplate = new RestTemplate();
@@ -27,18 +27,14 @@ public class RoomService implements RoomUtility {
 
     @Override
     public Collection<RoomDTO> findVacantRooms(VacantRoomsDTO vacantRoomsDTO) {
-
-        VacantRoomsDTO dto = new VacantRoomsDTO();
-        ResponseEntity<Collection> entity = restTemplate.getForEntity(URL, Collection.class,vacantRoomsDTO);
+        ResponseEntity<Collection> entity = restTemplate.getForEntity(URLs.BACKEND_URL + "room", Collection.class,vacantRoomsDTO);
         return entity.getBody();
     }
 
     @Override
     public boolean markRoomAsReserved(List<String> list) {
 
-        //return true;
-
-        ResponseEntity<Boolean> entity = restTemplate.postForEntity(URL, list, Boolean.class);
+        ResponseEntity<Boolean> entity = restTemplate.postForEntity(URLs.BACKEND_URL + "room", list, Boolean.class);
         return entity.getBody();
     }
 }
