@@ -33,7 +33,7 @@ public class HotelController {
     @GetMapping("/VacantHotels/{city}/{date}/{numberOfGuests}")
     public Collection<HotelDTO> findVacantRooms(@PathVariable String city, @PathVariable String date, @PathVariable int numberOfGuests) throws ParseException {
         logger.info("findVacantRooms called");
-        Date date1 = new SimpleDateFormat("dd-MM-YYYY").parse(date);
+        Date date1 = new SimpleDateFormat("YYYY-MM-dd").parse(date);
         VacantHotelsDTO dto = new VacantHotelsDTO(city, date1, numberOfGuests);
         return hotelService.findVacantHotels(dto);
     }
