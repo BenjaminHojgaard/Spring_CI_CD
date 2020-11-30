@@ -28,9 +28,10 @@ public class HotelController {
         logger.info("Constructor called");
     }
 
-    @GetMapping("")
-    public Collection<HotelDTO> findVacantHotels(@RequestBody VacantHotelsDTO vacantHotelsDTO) {
+    @GetMapping("/{city}/{date}/{numberOfGuests}")
+    public Collection<HotelDTO> findVacantHotels(@PathVariable String city, @PathVariable Date date, @PathVariable int numberOfGuests) {
         logger.info("findVacantRooms called");
+        var vacantHotelsDTO = new VacantHotelsDTO(city, date, numberOfGuests);
         return hotelService.findVacantHotels(vacantHotelsDTO);
     }
 }
