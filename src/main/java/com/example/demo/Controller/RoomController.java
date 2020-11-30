@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-/*
+
 @RestController
 @RequestMapping("/Room")
 public class RoomController {
@@ -39,4 +39,4 @@ public class RoomController {
         logger.info("markRoomAsReserved - called");
         return roomService.markRoomAsReserved(roomNumber);
     }
-}*/
+}
