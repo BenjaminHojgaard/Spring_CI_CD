@@ -26,8 +26,8 @@ public class RoomController {
         logger.info("Constructor called");
     }
 
-    @GetMapping("/{hotelNumber}/{date}/{numberOfGuests}")
-    public Collection<RoomDTO> findVacantRooms(@PathVariable int hotelNumber, @PathVariable Date date, @PathVariable int numberOfGuests) {
+    @GetMapping("")
+    public Collection<RoomDTO> findVacantRooms(@RequestParam int hotelNumber, @RequestParam Date date, @RequestParam int numberOfGuests) {
         logger.info("findVacantRooms - called");
         var vacantRoomsDTO = new VacantRoomsDTO(hotelNumber, date, numberOfGuests);
         return roomService.findVacantRooms(vacantRoomsDTO);
