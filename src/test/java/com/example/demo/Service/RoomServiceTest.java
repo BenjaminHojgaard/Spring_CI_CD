@@ -1,13 +1,20 @@
 package com.example.demo.Service;
 
+import dto.RoomDTO;
+import dto.VacantRoomsDTO;
+import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.ArgumentMatchers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
@@ -24,10 +31,11 @@ public class RoomServiceTest {
     }
 
 
-    @Test
-    public void mustReturnFalseWhenAnAlreadyTakenRoomNumberIsGiven() {
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    public void mustReturnTheRightValueInBodyWhenCalled(boolean value) {
         //Arrange
-        var returnedFromTemplate = new ResponseEntity<Boolean>(false, HttpStatus.OK);
+        var returnedFromTemplate = new ResponseEntity<Boolean>(value, HttpStatus.OK);
         var restTemplateMock = mock(RestTemplate.class);
         when(restTemplateMock.postForEntity(anyString(), eq(roomNumbers), any()))
                 .thenReturn((ResponseEntity)returnedFromTemplate);
@@ -39,22 +47,31 @@ public class RoomServiceTest {
         boolean result = rs.markRoomAsReserved(roomNumbers);
 
         //Assert
-        assertFalse(result);
+        assertEquals(value, result);
     }
+
 
     @Test
-    public void mustReturnTrueWhenRoomIsMarkedAsReserved() {
+    public void mustReturnAListOfVacantRoomsIfAnyRoomsFitTheCriteriaWhenCalled() {
         //Arrange
-        RoomService rs = new RoomService(null);
-        roomNumbers.add("a11");
+        List<RoomDTO> list = new ArrayList();
+        list.add(new RoomDTO());
+        var returnedFromTemplate = new ResponseEntity<List>(list, HttpStatus.OK);
+        var restTemplateMock = mock(RestTemplate.class);
+        when(restTemplateMock.getForEntity(anyString(), any(Class.class), (Object) anyVararg()))
+                .thenReturn((ResponseEntity)returnedFromTemplate);
 
+        RoomService rs = new RoomService(restTemplateMock);
 
         //Act
-        boolean result = rs.markRoomAsReserved(roomNumbers);
-
+        ArrayList<RoomDTO> result = (ArrayList<RoomDTO>) rs.findVacantRooms(new VacantRoomsDTO());
 
         //Assert
-        assertFalse(result);
-
+        assertEquals(1, result.size());
     }
+
+
+
+
+
 }
