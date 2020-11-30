@@ -18,7 +18,7 @@ public class HomeController {
     @GetMapping("/")
     public String index(final Model model) {
         model.addAttribute("title", "Docker + Spring Boot");
-        model.addAttribute("msg", "We used to do RMI, but now we're using REST!");
+        model.addAttribute("msg", "If you are reading this, then the frontend works!");
         logger.info("index.html successfully loaded");
         return "index";
     }
