@@ -12,28 +12,28 @@ import java.util.List;
 
 public class RoomService implements RoomUtility {
 
-    static RestTemplate restTemplate = new RestTemplate();
-    static final String URL = "http://localhost:8080/ISBN/";
+    static RestTemplate restTemplate;
+    static final String URL = "";
 
+
+    public RoomService(RestTemplate template) {
+        restTemplate = template;
+    }
 
     @Override
     public Collection<RoomDTO> findVacantRooms(VacantRoomsDTO vacantRoomsDTO) {
 
         VacantRoomsDTO dto = new VacantRoomsDTO();
         ResponseEntity<Collection> entity = restTemplate.getForEntity(URL, Collection.class, vacantRoomsDTO);
-
-
         return entity.getBody();
     }
 
     @Override
     public boolean markRoomAsReserved(List<String> list) {
 
+        //return true;
+
         ResponseEntity<Boolean> entity = restTemplate.postForEntity(URL, list, Boolean.class);
-
         return entity.getBody();
-
-
-
     }
 }
