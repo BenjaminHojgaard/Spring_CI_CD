@@ -17,7 +17,7 @@ public class LogService {
         List<String> list = new ArrayList<>();
 
         try {
-            File myObj = new File("filename.txt");
+            File myObj = new File("src/main/resources/log4j-application.log");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
