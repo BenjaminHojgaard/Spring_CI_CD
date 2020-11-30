@@ -2,6 +2,7 @@ package com.example.demo.Service;
 
 import dto.RoomDTO;
 import dto.VacantRoomsDTO;
+import org.jvnet.hk2.annotations.Service;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -28,7 +29,7 @@ public class RoomService implements RoomUtility {
     public Collection<RoomDTO> findVacantRooms(VacantRoomsDTO vacantRoomsDTO) {
 
         VacantRoomsDTO dto = new VacantRoomsDTO();
-        ResponseEntity<Collection> entity = restTemplate.getForEntity(URL, Collection.class, vacantRoomsDTO);
+        ResponseEntity<Collection> entity = restTemplate.getForEntity(URL, Collection.class,vacantRoomsDTO);
         return entity.getBody();
     }
 

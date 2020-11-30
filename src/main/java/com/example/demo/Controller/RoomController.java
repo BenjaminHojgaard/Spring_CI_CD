@@ -4,6 +4,7 @@ import com.example.demo.Service.RoomService;
 import dto.RoomDTO;
 import dto.VacantRoomsDTO;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
