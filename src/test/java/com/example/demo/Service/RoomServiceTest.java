@@ -67,8 +67,8 @@ public class RoomServiceTest {
         ArrayList<RoomDTO> result = (ArrayList<RoomDTO>) rs.findVacantRooms(new VacantRoomsDTO());
 
         //Assert
-        //assertEquals(1, result.size());
-        assertEquals(1, 2);
+        assertEquals(1, result.size());
+      
     }
 
 
