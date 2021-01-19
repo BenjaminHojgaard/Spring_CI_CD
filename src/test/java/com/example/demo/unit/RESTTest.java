@@ -38,7 +38,7 @@ public class RESTTest {
     public void testREST() throws IOException {
 
         HttpUriRequest request =
-                new HttpGet("http://ec2-3-139-98-176.us-east-2.compute.amazonaws.com/");
+                new HttpGet("http://ec2-3-15-11-225.us-east-2.compute.amazonaws.com/");
         CloseableHttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
 
         assertThat(
